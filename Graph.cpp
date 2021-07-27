@@ -193,3 +193,31 @@ cout<<"Outdegree of "<<ver<<"= "<<count<<endl;
         cout<<ver<<" is not present."<<endl;
     }
 }
+void Graph::inDegree(int ver){
+if(isVertexPresent(ver)){
+        Vertex *newVertex = GRAPH_HEAD;
+        int count=0;
+        while(newVertex!=nullptr){
+            if(newVertex->data==ver){
+                            newVertex=newVertex->nextVertex;
+
+                continue;
+            }
+            Vertex *tempVertex=newVertex;
+            while(tempVertex->nextNeighbour!=nullptr){
+                tempVertex=tempVertex->nextNeighbour;
+                if(tempVertex->data==ver){
+                    count++;
+                }
+            }
+            newVertex=newVertex->nextVertex;
+        }
+       cout<<"Indegree of "<<ver<<"= "<<count<<endl;
+ 
+}
+else{
+    cout<<ver<<" is not present."<<endl;
+}
+
+
+}
