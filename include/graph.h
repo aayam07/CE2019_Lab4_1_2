@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+using namespace std;
 
 class Vertex{
     private:
@@ -44,12 +46,4 @@ public:
 
 };
 
-graph::graph(bool directed)
-{
-    this->directed = directed;
-}
 
-graph::~graph()
-{
-    delete HEAD;
-}
