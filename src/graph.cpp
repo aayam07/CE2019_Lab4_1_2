@@ -21,3 +21,15 @@ bool graph::isEmpty()
         return false;
     }
 }
+
+bool graph::isdirected()
+{
+    if(this->directed == true)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
