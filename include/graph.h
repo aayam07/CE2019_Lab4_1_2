@@ -3,13 +3,13 @@
 using namespace std;
 
 class Vertex{
-    private:
+    public:
     int value;
     Vertex *nextVertex;
     Vertex *nextNeighbour;
 
     public:
-    Vertex(int value, Vertex *nextVertext, Vertex *nextNeighbour)
+    Vertex(int value)
     {
         this->value = value;
         nextVertex = nullptr;
@@ -43,6 +43,7 @@ public:
     int degree();
     int neighbours(int vertex);
     bool neighbour(int vertex1, int vertex2);
+    bool vertex_exists(int vertex);
 
 };
 
