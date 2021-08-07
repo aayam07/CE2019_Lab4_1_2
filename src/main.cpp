@@ -20,7 +20,21 @@ int main()
     g.addEdge(90,10); // adds edge between vertex 30 and 40, unsuccessful since 90 doesn't exist in the graph
     cout << g.numVertices() << endl;
     // g.removeVertex(60);
-    // cout << g.vertex_exists(60) << endl;
+    g.displayVertex();
+    cout << g.vertex_exists(60) << endl;
+    g.addEdge(10,30);
+    g.addEdge(10,20);
+    g.addEdge(20,40);
+    g.addEdge(20,10);
+    g.addEdge(30,50);
+    g.addEdge(30,10);
+    g.addEdge(40,60);
+    g.addEdge(40,20);
+    g.addEdge(50,30);
+    g.addEdge(50,60);
+    g.addEdge(60,50);
+    g.addEdge(60,40);
+    cout << g.indegree(20) << endl;
 
 
 

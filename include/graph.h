@@ -39,12 +39,13 @@ public:
     void removeEdge(int vertex1, int vertex2);
     int numVertices();
     int numEdges();
-    int indegree();
-    int outdegree();
-    int degree();
+    int indegree(int vertex);
+    int outdegree(int vertex);
+    int degree(int vertex);
     int neighbours(int vertex);
     bool neighbour(int vertex1, int vertex2);
     bool vertex_exists(int vertex);
+    void displayVertex(char separator=' ');
 
 };
 

@@ -89,7 +89,7 @@ void graph::addEdge(int vertex1, int vertex2)
     }
     else
     {
-        cout << "Either one or both the vertices dont exist, hence edge cant be formed." << endl;
+        cout << "Either one or both of the vertices dont exist.So, edge can't be added." << endl;
     }
 }
 
@@ -120,31 +120,77 @@ int graph::numVertices()
 {
     int count = 0;
     Vertex *tempVertex = HEAD;
-    while(tempVertex != nullptr)
+    while (tempVertex != nullptr)
     {
         tempVertex = tempVertex->nextVertex;
         count += 1;
     }
     return count;
-
 }
 
 // void graph::removeVertex(int vertexToRemove)
 // {
+//     Vertex *prevVertex = nullptr;
 //     Vertex *tempVertex = HEAD;
 //     while(tempVertex != nullptr && tempVertex->value != vertexToRemove)
 //     {
+//         prevVertex = tempVertex;
 //         tempVertex = tempVertex->nextVertex;
 //     }
 //     if(tempVertex == nullptr)
 //     {
 //         cout << "The vertex to be removed doesn't exist in the graph" << endl;
-        
+
 //     }
 //     else
 //     {
-//         vertexToRemove = tempVertex->value;
+//         prevVertex = tempVertex->nextVertex;
 //         delete tempVertex;
-//         cout << "Removed " << vertexToRemove << " from the graph." << endl;
+//         cout << "Deleted " << vertexToRemove << endl;
+
 //     }
 // }
+
+void graph::displayVertex(char separator)
+{
+    Vertex *newVertex = this->HEAD;
+    while (newVertex != nullptr)
+    {
+
+        cout << newVertex->value << separator;
+        newVertex = newVertex->nextVertex;
+    }
+    cout << endl;
+}
+
+int graph::indegree(int vertex)
+{
+    int count = 0;
+    if (vertex_exists(vertex))
+    {
+        Vertex *traVertex = this->HEAD;
+        while (traVertex != nullptr)
+        {
+            if (traVertex->value == vertex)
+            {
+                traVertex = traVertex->nextVertex;
+                continue;
+            }
+            Vertex *tempVertex = traVertex;
+            while (tempVertex->nextNeighbour != nullptr)
+            {
+                tempVertex = tempVertex->nextNeighbour;
+                if (tempVertex->value == vertex)
+                {
+                    count += 1;
+                }
+            }
+            traVertex = traVertex->nextVertex;
+        }
+    }
+    else
+    {
+        cout << vertex << " doesn't exist in the graph" << endl;
+    }
+    return count;
+}
