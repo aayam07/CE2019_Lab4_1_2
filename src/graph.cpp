@@ -66,55 +66,55 @@ bool graph::vertex_exists(int vertex)
     }
 }
 
-// void graph::addEdge(int vertex1, int vertex2)
-// {
-//     if (vertex_exists(vertex1) && vertex_exists(vertex2))
-//     {
-//         Vertex *tempVertex1 = this->HEAD;
-//         while (tempVertex1 != nullptr && tempVertex1->value != vertex1)
-//         {
-//             tempVertex1 = tempVertex1->nextVertex;
-//         }
-//         if (tempVertex1 != nullptr)
-//         {
+void graph::addEdge(int vertex1, int vertex2)
+{
+    if (vertex_exists(vertex1) && vertex_exists(vertex2))
+    {
+        Vertex *tempVertex1 = this->HEAD;
+        while (tempVertex1 != nullptr && tempVertex1->value != vertex1)
+        {
+            tempVertex1 = tempVertex1->nextVertex;
+        }
+        if (tempVertex1 != nullptr)
+        {
 
-//             Vertex *tempVertex2 = new Vertex(vertex2);
-//             tempVertex1->nextNeighbour = tempVertex2;
+            Vertex *tempVertex2 = new Vertex(vertex2, nullptr, tempVertex1->nextNeighbour);
+            tempVertex1->nextNeighbour = tempVertex2;
 
-//             if (!this->isdirected() && !neighbour(vertex2, vertex1))
-//             {
-//                 addEdge(vertex2, vertex1);
-//             }
-//         }
-//     }
-//     else
-//     {
-//         cout << "Either one or both the vertices dont exist, hence edge cant be formed." << endl;
-//     }
-// }
+            if (!this->isdirected() && !neighbour(vertex2, vertex1))
+            {
+                addEdge(vertex2, vertex1);
+            }
+        }
+    }
+    else
+    {
+        cout << "Either one or both the vertices dont exist, hence edge cant be formed." << endl;
+    }
+}
 
-// bool graph::neighbour(int ver1, int ver2)
-// {
-//     Vertex *newVertex = HEAD;
+bool graph::neighbour(int vertex1, int vertex2)
+{
+    Vertex *newVertex = this->HEAD;
 
-//     while (newVertex != nullptr && newVertex->value != ver1)
-//     {
+    while (newVertex != nullptr && newVertex->value != vertex1)
+    {
 
-//         newVertex = newVertex->nextVertex;
-//     }
-//     while (newVertex != nullptr && newVertex->value != ver2)
-//     {
-//         newVertex = newVertex->nextNeighbour;
-//     }
-//     if (newVertex != nullptr)
-//     {
-//         return true;
-//     }
-//     else
-//     {
-//         return false;
-//     }
-// }
+        newVertex = newVertex->nextVertex;
+    }
+    while (newVertex != nullptr && newVertex->value != vertex2)
+    {
+        newVertex = newVertex->nextNeighbour;
+    }
+    if (newVertex != nullptr)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 
 int graph::numVertices()
 {
@@ -129,23 +129,22 @@ int graph::numVertices()
 
 }
 
-void graph::removeVertex(int vertexToRemove)
-{
-    Vertex *tempVertex = HEAD;
-    while(tempVertex != nullptr && tempVertex->value != vertexToRemove)
-    {
-        tempVertex = tempVertex->nextVertex;
-    }
-    if(tempVertex == nullptr)
-    {
-        cout << "The vertex to be removed doesn't exist in the graph" << endl;
+// void graph::removeVertex(int vertexToRemove)
+// {
+//     Vertex *tempVertex = HEAD;
+//     while(tempVertex != nullptr && tempVertex->value != vertexToRemove)
+//     {
+//         tempVertex = tempVertex->nextVertex;
+//     }
+//     if(tempVertex == nullptr)
+//     {
+//         cout << "The vertex to be removed doesn't exist in the graph" << endl;
         
-    }
-    else
-    {
-        vertexToRemove = tempVertex->value;
-        delete tempVertex;
-        cout << "Removed " << vertexToRemove << " from the graph." << endl;
-    }
-
-}
+//     }
+//     else
+//     {
+//         vertexToRemove = tempVertex->value;
+//         delete tempVertex;
+//         cout << "Removed " << vertexToRemove << " from the graph." << endl;
+//     }
+// }

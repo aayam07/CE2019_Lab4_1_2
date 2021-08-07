@@ -9,15 +9,16 @@ class Vertex{
     Vertex *nextNeighbour;
 
     public:
-    Vertex(int value)
+    Vertex(int value, Vertex *nextVertex = nullptr, Vertex *nextNeighbour = nullptr)
     {
         this->value = value;
-        nextVertex = nullptr;
-        nextNeighbour = nullptr;
+        this->nextVertex = nextVertex;
+        this->nextNeighbour = nextNeighbour;
     }
     ~Vertex()
     {
-        delete nextVertex, nextNeighbour;
+        delete nextVertex; 
+        delete nextNeighbour;
     }
 
 };
