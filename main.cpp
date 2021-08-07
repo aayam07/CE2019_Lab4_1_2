@@ -23,8 +23,14 @@ g.addEdge(7,9);
 g.addEdge(7,8);
 cout<<endl;
 cout<<g.neighbour(7,10)<<endl;
+g.removeEdge(7,10);
+cout<<g.neighbour(7,10)<<endl;
+
 cout<<g.neighbour(10,7)<<endl;
 cout<<g.neighbour(7,8)<<endl;
+
+
+
 g.outDegree(7);
 g.outDegree(10);
 g.outDegree(11);

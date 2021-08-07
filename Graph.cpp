@@ -108,6 +108,31 @@ else{
 
 }
 
+void Graph::removeEdge(int ver1, int ver2){
+    if (neighbour(ver1,ver2)){
+        Vertex *newVertex = GRAPH_HEAD;
+
+        while(newVertex->data!=ver1){
+
+                newVertex=newVertex->nextVertex;
+        }
+
+Vertex *temp=newVertex->nextNeighbour;
+while(temp->data!=ver2){
+    temp=temp->nextNeighbour;
+    newVertex=newVertex->nextNeighbour;
+}
+newVertex->nextNeighbour=temp->nextNeighbour;
+temp=nullptr;
+if(!isDirected() && neighbour(ver2,ver1)){
+    removeEdge(ver2,ver1);
+}
+    }
+    else{
+        cout<<"Sorry, operation: removeEdge is unsuccessful!"<<endl;
+    }
+}
+
 
 
 // void Graph::addEdge(int ver1, int ver2){
@@ -171,6 +196,62 @@ void Graph::displayVertex(){
 bool Graph::isDirected(){
     return directed; 
 }
+
+
+// int Graph::outDegree(int ver){
+    
+//         Vertex *newVertex = GRAPH_HEAD;
+//         int count=0;
+
+//         while(newVertex->data!=ver){
+
+//                 newVertex=newVertex->nextVertex;
+//         }
+//         Vertex *tempVertex=newVertex;
+// while(tempVertex->nextNeighbour!=nullptr){
+//     tempVertex=tempVertex->nextNeighbour;
+//     count++;
+    
+// }
+// return count;
+// }
+// int Graph::inDegree(int ver){
+
+//         Vertex *newVertex = GRAPH_HEAD;
+//         int count=0;
+//         while(newVertex!=nullptr){
+//             if(newVertex->data==ver){
+//                             newVertex=newVertex->nextVertex;
+
+//                 continue;
+//             }
+//             Vertex *tempVertex=newVertex;
+//             while(tempVertex->nextNeighbour!=nullptr){
+//                 tempVertex=tempVertex->nextNeighbour;
+//                 if(tempVertex->data==ver){
+//                     count++;
+//                 }
+//             }
+//             newVertex=newVertex->nextVertex;
+//         }
+ 
+// return count;
+// }
+// int Graph::neighbours(int ver){
+//     if(isDirected()){
+//     return inDegree(ver)+ outDegree(ver);
+//     }
+//     else{
+//         cout<<"apple"<<endl;
+//         return inDegree(ver);
+//     }
+// }
+
+
+
+
+
+
 
 void Graph::outDegree(int ver){
     if(isVertexPresent(ver)){
