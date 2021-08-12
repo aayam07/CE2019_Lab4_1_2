@@ -37,4 +37,6 @@ g.outDegree(11);
 g.inDegree(7);
 g.inDegree(10);
 g.inDegree(11);
+g.neighbours(11);
+g.numVertices();
 }

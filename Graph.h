@@ -37,6 +37,7 @@ void addEdge(int ver1, int ver2);
 void removeVertex(int ver);
 void removeEdge(int ver1, int ver2);
 void numEdges();
+void numVertices();
 void inDegree(int ver);
 void outDegree(int ver);
 void degree(int ver);

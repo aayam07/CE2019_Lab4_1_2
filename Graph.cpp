@@ -302,3 +302,44 @@ else{
 
 
 }
+
+
+void Graph::neighbours(int ver){ 
+    if(isVertexPresent(ver)){
+        Vertex *newVertex = GRAPH_HEAD;
+
+        while(newVertex->data!=ver){
+
+                newVertex=newVertex->nextVertex;
+        }
+        Vertex *tempVertex=newVertex->nextNeighbour;
+        cout<<"Neighbours of "<<ver<<":- ";
+while(tempVertex!=nullptr){
+    cout<<tempVertex->data<<" ";
+    tempVertex=tempVertex->nextNeighbour;
+    
+}
+cout<<endl;
+    }
+    else{
+        cout<<ver<<" is not present."<<endl;
+    }
+}
+
+void Graph::numVertices(){
+   if(!isEmpty()){
+       int c=0;
+ Vertex *newVertex = GRAPH_HEAD;
+    while(newVertex!=nullptr){
+c=c+1;
+        newVertex=newVertex->nextVertex;
+    }
+cout<<"Number of vertices:- "<<c<<endl;
+   }
+else{
+    cout<<"Graph is empty"<<endl;
+}
+
+
+
+}
