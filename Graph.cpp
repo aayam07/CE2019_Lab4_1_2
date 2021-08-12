@@ -86,6 +86,7 @@ bool Graph::isVertexPresent(int ver){
 void Graph::addEdge(int ver1, int ver2){
 
     if(isVertexPresent(ver1) && isVertexPresent(ver2)){
+        if(!neighbour(ver1,ver2)){
         Vertex *newVertex = GRAPH_HEAD;
 
         while(newVertex!=nullptr && newVertex->data!=ver1){
@@ -101,6 +102,7 @@ if(newVertex!=nullptr){
             addEdge(ver2,ver1);
         }
 }
+    }
     }
 else{
     cout<<"Either one or both the vertices dont exist, hence edge cant be formed."<<endl;
@@ -253,8 +255,7 @@ bool Graph::isDirected(){
 
 
 
-void Graph::outDegree(int ver){
-    if(isVertexPresent(ver)){
+int Graph::outDegree(int ver){
         Vertex *newVertex = GRAPH_HEAD;
         int count=0;
 
@@ -268,14 +269,10 @@ while(tempVertex->nextNeighbour!=nullptr){
     count++;
     
 }
-cout<<"Outdegree of "<<ver<<"= "<<count<<endl;
-    }
-    else{
-        cout<<ver<<" is not present."<<endl;
-    }
+return count;
+    
 }
-void Graph::inDegree(int ver){
-if(isVertexPresent(ver)){
+int Graph::inDegree(int ver){
         Vertex *newVertex = GRAPH_HEAD;
         int count=0;
         while(newVertex!=nullptr){
@@ -293,15 +290,17 @@ if(isVertexPresent(ver)){
             }
             newVertex=newVertex->nextVertex;
         }
-       cout<<"Indegree of "<<ver<<"= "<<count<<endl;
- 
+      return count;
 }
-else{
-    cout<<ver<<" is not present."<<endl;
+int Graph::degree(int ver){
+    if(isDirected()){
+        return inDegree(ver)+ outDegree(ver);
+    }
+    else{
+        return outDegree(ver);
+    }
 }
 
-
-}
 
 
 void Graph::neighbours(int ver){ 
@@ -339,7 +338,28 @@ cout<<"Number of vertices:- "<<c<<endl;
 else{
     cout<<"Graph is empty"<<endl;
 }
+}
+
+void Graph::numEdges(){
+     if(!isEmpty()){
+int count=0;
+
+        Vertex *newVertex = GRAPH_HEAD;
+
+        while(newVertex!=nullptr){
+count=count + outDegree(newVertex->data);
+                newVertex=newVertex->nextVertex;
+        }
+        if(!isDirected()){
+            
+count=count/2;
+        }
+                    cout<<"Number of edges of the graph:- "<<count<<endl;
 
 
+     }
+     else{
+         cout<<"Graph is empty"<<endl;
+     }
 
 }
