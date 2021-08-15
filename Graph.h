@@ -1,6 +1,5 @@
 #pragma once
 
-#define MAX_NODES 10
 
 class Vertex{
     public:
@@ -47,5 +46,7 @@ void displayVertex();
 private:
 Vertex *GRAPH_HEAD;
 bool directed;
+void removeVertexHead();
+void removeAllEdges(Vertex *VerEdgeDelete);
 
 };

@@ -43,46 +43,6 @@ bool Graph::isVertexPresent(int ver){
 }
 
 
-
-
-
-// void Graph::addEdge(int ver1, int ver2){
-//         Vertex *newVertex = GRAPH_HEAD;
-
-//         while(newVertex!=nullptr && (newVertex->data!=ver1 && newVertex->data!=ver2)){
-
-//                 newVertex=newVertex->nextVertex;
-//         }
-// if(newVertex!=nullptr){
-//     if(newVertex->data==ver1){
-//     if(isVertexPresent(ver2)){
-//         Vertex *tempVertex =new  Vertex(ver2,nullptr,newVertex->nextNeighbour);
-//         newVertex->nextNeighbour=tempVertex;
-//         }
-//         else{
-//                 cout<<ver2<<" doesnt exist."<<endl;
-
-//         }
-//     }
-//     else{
-//             if(isVertexPresent(ver1)){
-//         Vertex *tempVertex =new  Vertex(ver1,nullptr,newVertex->nextNeighbour);
-//         newVertex->nextNeighbour=tempVertex;
-//         }
-//         else{
-//                 cout<<ver1<<" doesnt exist."<<endl;
-
-//         }
-//     }
-
-// }
-// else{
-//     cout<<ver1<<" doesnt exist."<<endl;
-// }
-
-// }
-
-
 void Graph::addEdge(int ver1, int ver2){
 
     if(isVertexPresent(ver1) && isVertexPresent(ver2)){
@@ -137,30 +97,6 @@ if(!isDirected() && neighbour(ver2,ver1)){
 
 
 
-// void Graph::addEdge(int ver1, int ver2){
-//         Vertex *newVertex = GRAPH_HEAD;
-
-//         while(newVertex!=nullptr && newVertex->data!=ver1){
-
-//                 newVertex=newVertex->nextVertex;
-//         }
-// if(newVertex!=nullptr){
-//     if(isVertexPresent(ver2)){
-//         Vertex *tempVertex =new  Vertex(ver2,nullptr,newVertex->nextNeighbour);
-//         newVertex->nextNeighbour=tempVertex;}
-//         else{
-//                 cout<<ver2<<" doesnt exist."<<endl;
-
-//         }
-// }
-// else{
-//     cout<<ver1<<" doesnt exist."<<endl;
-// }
-
-// }
-
-
-
 bool Graph::neighbour(int ver1, int ver2){
         Vertex *newVertex = GRAPH_HEAD;
 
@@ -200,65 +136,11 @@ bool Graph::isDirected(){
 }
 
 
-// int Graph::outDegree(int ver){
-    
-//         Vertex *newVertex = GRAPH_HEAD;
-//         int count=0;
-
-//         while(newVertex->data!=ver){
-
-//                 newVertex=newVertex->nextVertex;
-//         }
-//         Vertex *tempVertex=newVertex;
-// while(tempVertex->nextNeighbour!=nullptr){
-//     tempVertex=tempVertex->nextNeighbour;
-//     count++;
-    
-// }
-// return count;
-// }
-// int Graph::inDegree(int ver){
-
-//         Vertex *newVertex = GRAPH_HEAD;
-//         int count=0;
-//         while(newVertex!=nullptr){
-//             if(newVertex->data==ver){
-//                             newVertex=newVertex->nextVertex;
-
-//                 continue;
-//             }
-//             Vertex *tempVertex=newVertex;
-//             while(tempVertex->nextNeighbour!=nullptr){
-//                 tempVertex=tempVertex->nextNeighbour;
-//                 if(tempVertex->data==ver){
-//                     count++;
-//                 }
-//             }
-//             newVertex=newVertex->nextVertex;
-//         }
- 
-// return count;
-// }
-// int Graph::neighbours(int ver){
-//     if(isDirected()){
-//     return inDegree(ver)+ outDegree(ver);
-//     }
-//     else{
-//         cout<<"apple"<<endl;
-//         return inDegree(ver);
-//     }
-// }
-
-
-
-
-
-
 
 int Graph::outDegree(int ver){
         Vertex *newVertex = GRAPH_HEAD;
         int count=0;
-
+if(isVertexPresent(ver)){
         while(newVertex->data!=ver){
 
                 newVertex=newVertex->nextVertex;
@@ -269,12 +151,14 @@ while(tempVertex->nextNeighbour!=nullptr){
     count++;
     
 }
+}
 return count;
     
 }
 int Graph::inDegree(int ver){
         Vertex *newVertex = GRAPH_HEAD;
         int count=0;
+        if(isVertexPresent(ver)){
         while(newVertex!=nullptr){
             if(newVertex->data==ver){
                             newVertex=newVertex->nextVertex;
@@ -290,6 +174,7 @@ int Graph::inDegree(int ver){
             }
             newVertex=newVertex->nextVertex;
         }
+        }
       return count;
 }
 int Graph::degree(int ver){
@@ -299,6 +184,8 @@ int Graph::degree(int ver){
     else{
         return outDegree(ver);
     }
+    
+    return 0;
 }
 
 
@@ -362,4 +249,65 @@ count=count/2;
          cout<<"Graph is empty"<<endl;
      }
 
+}
+
+void Graph::removeVertex(int ver){
+Vertex *prev=GRAPH_HEAD;
+Vertex *temp=GRAPH_HEAD->nextVertex;
+if(ver==GRAPH_HEAD->data){
+removeAllEdges(GRAPH_HEAD);
+            GRAPH_HEAD=prev->nextVertex;
+            prev=nullptr;
+            
+            
+}
+else {
+if(neighbour(prev->data,ver)){
+
+    removeEdge(prev->data,ver);
+
+    
+    
+}
+}
+while(temp!=nullptr){
+
+
+if(temp->data==ver){
+
+    removeAllEdges(temp); 
+    prev->nextVertex=temp->nextVertex;
+    temp=temp->nextVertex;
+}
+else if(neighbour(temp->data,ver)){
+
+    removeEdge(temp->data,ver);
+
+    if(prev!=nullptr){
+    prev=prev->nextVertex;
+
+    }
+    temp=temp->nextVertex;
+
+}
+else {
+
+if(prev!=nullptr){
+    prev=prev->nextVertex;
+
+    }
+    temp=temp->nextVertex;
+}
+}
+}
+
+
+void Graph::removeAllEdges(Vertex *VerEdgeDelete){
+        Vertex *tempVertex=VerEdgeDelete->nextNeighbour;
+while(tempVertex!=nullptr){
+    removeEdge(VerEdgeDelete->data,tempVertex->data);
+    
+    tempVertex=tempVertex->nextNeighbour;
+    
+}
 }
