@@ -311,3 +311,27 @@ while(tempVertex!=nullptr){
     
 }
 }
+
+
+
+
+
+void Graph::displayEdge(){
+ Vertex *newVertex = GRAPH_HEAD;
+ cout<<"Edges:- "<<endl;
+    while(newVertex!=nullptr){
+Vertex *tempVertex=newVertex->nextNeighbour;
+    cout<<newVertex->data<<"-> ";
+
+while (tempVertex!=nullptr){
+        cout<<tempVertex->data<<" ";
+    
+    tempVertex=tempVertex->nextNeighbour;
+}
+    cout<<endl;
+
+newVertex=newVertex->nextVertex;
+    }
+
+
+}

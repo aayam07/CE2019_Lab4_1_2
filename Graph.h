@@ -43,10 +43,10 @@ int degree(int ver);
 void neighbours(int ver);
 bool neighbour(int ver1, int ver2);
 void displayVertex();
+void displayEdge();
 private:
 Vertex *GRAPH_HEAD;
 bool directed;
-void removeVertexHead();
 void removeAllEdges(Vertex *VerEdgeDelete);
 
 };

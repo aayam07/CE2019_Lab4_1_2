@@ -32,6 +32,7 @@ cout<<g.neighbour(7,10)<<endl;
 
 cout<<g.neighbour(10,7)<<endl;
 cout<<g.neighbour(7,8)<<endl;
+g.displayEdge();
 
 g.removeVertex(7);
 cout<<"Outdegree of 7:- "<<g.outDegree(7)<<endl;
@@ -49,5 +50,5 @@ g.displayVertex();
 g.neighbours(11);
 g.numVertices();
 g.numEdges();
-
+g.displayEdge();
 }
