@@ -22,7 +22,7 @@ int main()
     g.addEdge(90,10); // adds edge between vertex 30 and 40, unsuccessful since 90 doesn't exist in the graph
     cout << g.numVertices() << endl; // prints the total number of vertices in the graph
     g.displayVertex();
-    cout << g.vertex_exists(60) << endl;
+    cout << g.vertex_exists(60) << endl; // prints 1 if vertex 60 exists in the graph, 0 otherwise. Prints True(1)
 
     g.addEdge(10,30);
     g.addEdge(10,20);
