@@ -9,6 +9,12 @@ class Vertex{
     Vertex *nextNeighbour;
 
     public:
+    Vertex()
+    {
+        nextVertex = nullptr;
+        nextNeighbour = nullptr;
+    }
+
     Vertex(int value, Vertex *nextVertex = nullptr, Vertex *nextNeighbour = nullptr)
     {
         this->value = value;
@@ -28,6 +34,8 @@ class graph
 private:
     Vertex *HEAD;
     bool directed;
+    void removeAllEdges(Vertex *vertexEdgeDelete);
+
 public:
     graph(bool isdirected);
     ~graph();
@@ -42,10 +50,11 @@ public:
     int indegree(int vertex);
     int outdegree(int vertex);
     int degree(int vertex);
-    int neighbours(int vertex);
+    Vertex* neighbours(int vertex);
     bool neighbour(int vertex1, int vertex2);
     bool vertex_exists(int vertex);
     void displayVertex(char separator=' ');
+    void displayEdges();
 
 };
 
