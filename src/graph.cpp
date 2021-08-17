@@ -128,29 +128,6 @@ int graph::numVertices()
     return count;
 }
 
-// void graph::removeVertex(int vertexToRemove)
-// {
-//     Vertex *prevVertex = nullptr;
-//     Vertex *tempVertex = HEAD;
-//     while(tempVertex != nullptr && tempVertex->value != vertexToRemove)
-//     {
-//         prevVertex = tempVertex;
-//         tempVertex = tempVertex->nextVertex;
-//     }
-//     if(tempVertex == nullptr)
-//     {
-//         cout << "The vertex to be removed doesn't exist in the graph" << endl;
-
-//     }
-//     else
-//     {
-//         prevVertex = tempVertex->nextVertex;
-//         delete tempVertex;
-//         cout << "Deleted " << vertexToRemove << endl;
-
-//     }
-// }
-
 void graph::displayVertex(char separator)
 {
     Vertex *tempVertex = this->HEAD;
@@ -261,34 +238,6 @@ Vertex* graph::neighbours(int vertex)
     }
     return traVertex;
 }
-
-// int graph::numEdges()
-// {
-//     int count = 0;
-//     Vertex *preVertex = nullptr;
-//     Vertex *traVertex = this->HEAD;
-//     Vertex* tempVertex = traVertex;
-//     while(tempVertex->nextNeighbour != nullptr)
-//     {
-//         tempVertex = tempVertex->nextNeighbour;
-//         count++;
-//     }
-//     while(traVertex != nullptr)
-//     {
-//         preVertex = traVertex;
-//         traVertex = traVertex->nextVertex;
-//         tempVertex = traVertex;
-//         while(tempVertex->nextNeighbour != nullptr)
-//         {
-//             tempVertex = tempVertex->nextNeighbour;
-//             if(tempVertex->value != preVertex->value)
-//             {
-//                 count++;
-//             }
-//         }
-//     }
-//     return count;
-// }
 
 int graph::numEdges()
 {
