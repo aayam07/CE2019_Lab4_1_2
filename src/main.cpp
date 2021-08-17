@@ -46,6 +46,7 @@ int main()
 
     cout << "The number of edges in the graph are: " << g.numEdges() << endl; // prints 7, since there are 7 edges
 
+    g.displayEdges(); // Prints all the edges of the graph in a linked list representation
     g.removeEdge(20,40); // removes edge between 20 and 40
     g.removeEdge(60,40); // removes edge between 40 and 60
     cout << "The number of edges in the graph are: " << g.numEdges() << endl; // prints 5, since two edges are removed in the above two lines
