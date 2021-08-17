@@ -1,10 +1,7 @@
 #include "graph.h"
 
 int main()
-{
-    int is_directed;
-    // cin >> "Enter 1 for directed graph, 0 for undirected graph: " >> is_directed >> endl;
-    
+{   
     // creating graph object as g
     graph g(0); // 0 means false i.e directed is set to false (assuming this as undirected graph)
 
@@ -34,6 +31,8 @@ int main()
     g.addEdge(40,60);
     g.addEdge(50,60);
     cout << g.degree(10) << endl; // prints the degree of a vertex
+    cout << g.indegree(10) << endl; // since it is an undirected graph, indegree = outdegree
+    cout << g.outdegree(10) << endl; // since it is an undirected graph, indegree = outdegree
 
     // Implementation to check the neighbours of a particular vertex
     Vertex *vertex_neighbours = g.neighbours(30);
